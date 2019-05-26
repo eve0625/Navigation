@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MainNavigationItemText">
+        <item name="android:textSize">10dp</item>
+        <item name="android:fontFamily">@font/notosans_kr_medium</item>
+    </style>
+
 </resources>
