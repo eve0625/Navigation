@@ -4,7 +4,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#73E1E1">
 
     <TextView
             android:layout_width="match_parent"
@@ -12,14 +13,5 @@
             android:text="홈"
             android:textSize="50dp"
             android:fontFamily="@font/notosans_kr_bold"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/list"
-                android:name="com.eve0625.navigation.main.HomeFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="80dp"
-                tools:context=".main.fragment.HomeFragment"
-                tools:listitem="@layout/row_banner"/>
 
 </FrameLayout>
