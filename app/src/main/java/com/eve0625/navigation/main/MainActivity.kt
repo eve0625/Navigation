@@ -1,71 +1,54 @@
 package com.eve0625.navigation.main
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.navigation.NavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.eve0625.navigation.R
-import com.eve0625.navigation.main.fragment.HomeFragment
-import com.eve0625.navigation.main.fragment.LibraryFragment
-import com.eve0625.navigation.main.fragment.MyPageFragment
-import com.eve0625.navigation.main.fragment.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private enum class MainTab(val tag: String) {
-        HOME("home"),
-        SEARCH("search"),
-        LIBRARY("library"),
-        MYPAGE("mypage")
-    }
-
-    private lateinit var textMessage: TextView
-    private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
-            R.id.nav_home -> {
-                switchFragment(MainTab.HOME)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.nav_search -> {
-                switchFragment(MainTab.SEARCH)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.nav_library -> {
-                switchFragment(MainTab.LIBRARY)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.nav_mypage -> {
-                switchFragment(MainTab.MYPAGE)
-                return@OnNavigationItemSelectedListener true
-            }
-        }
-        false
-    }
-
-    private val mainFragments: MutableList<Fragment> = ArrayList<Fragment>().apply {
-        add(HomeFragment.newInstance())
-        add(SearchFragment.newInstance())
-        add(LibraryFragment.newInstance())
-        add(MyPageFragment.newInstance())
-    }
-
-    private fun switchFragment(tab: MainTab) {
-        supportFragmentManager.beginTransaction()
-            .replace(fragment_container.id, mainFragments[tab.ordinal], tab.tag)
-            //.addToBackStack(null)
-            .commit()
-    }
+    private var mCurrentNavController: LiveData<NavController>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        if (savedInstanceState == null) {
+            setupBottomNavigationBar()
+        } //else인 경우 onRestoreInstanceState에서 처리
 
-        navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+    }
 
-        switchFragment(MainTab.HOME)
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        setupBottomNavigationBar()
+    }
+
+    /**
+     * 최초 생성시와 복구시에 호출한다.
+     */
+    private fun setupBottomNavigationBar() {
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
+
+        val navGraphIds = listOf(R.navigation.home, R.navigation.search, R.navigation.library, R.navigation.mypage)
+
+        // 네비게이션뷰에 네비게이션 그래프 목록을 설정
+        val controller = bottomNavigationView.setupWithNavController(
+            navGraphIds = navGraphIds,
+            fragmentManager = supportFragmentManager,
+            containerId = R.id.nav_host_container,
+            intent = intent
+        )
+
+        // 선택된 네비게이션 컨트롤러가 변경되었을때, action bar에 적용
+        controller.observe(this, Observer { navController ->
+            setupActionBarWithNavController(navController)
+        })
+
+        mCurrentNavController = controller
     }
 
 }

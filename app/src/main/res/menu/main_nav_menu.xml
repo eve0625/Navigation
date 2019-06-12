@@ -2,22 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-            android:id="@+id/nav_home"
+            android:id="@+id/home"
             android:icon="@drawable/icn_home_tab"
             android:title="@string/main_nav_home"/>
 
     <item
-            android:id="@+id/nav_search"
+            android:id="@+id/search"
             android:icon="@drawable/icn_search_tab"
             android:title="@string/main_nav_search"/>
 
     <item
-            android:id="@+id/nav_library"
+            android:id="@+id/library"
             android:icon="@drawable/icn_library_tab"
             android:title="@string/main_nav_library"/>
 
     <item
-            android:id="@+id/nav_mypage"
+            android:id="@+id/mypage"
             android:icon="@drawable/icn_mypage_tab"
             android:title="@string/main_nav_mypage"/>
 
