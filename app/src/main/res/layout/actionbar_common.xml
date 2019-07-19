@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:paddingLeft="@dimen/common_side_padding"
+        android:paddingStart="@dimen/common_side_padding"
+        android:paddingRight="@dimen/common_side_padding"
+        android:paddingEnd="@dimen/common_side_padding"
+        android:gravity="center_vertical"
+        android:layout_height="@dimen/common_actionbar_height">
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_home"
+            android:layout_width="@dimen/common_actionbar_menu_size"
+            android:layout_height="@dimen/common_actionbar_menu_size"
+            android:src="@android:drawable/ic_menu_gallery"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            tools:text="타이틀"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_menu"
+            android:layout_width="@dimen/common_actionbar_menu_size"
+            android:layout_height="@dimen/common_actionbar_menu_size"
+            android:src="@android:drawable/ic_menu_delete"/>
+
+</LinearLayout>
