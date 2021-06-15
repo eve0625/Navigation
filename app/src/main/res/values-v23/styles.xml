@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- Base application theme. -->
@@ -6,12 +7,8 @@
         <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/main_red</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item> <!-- 상태바 아래에 다른 뷰가 표시될 수 있도록 함 -->
-        <item name="android:statusBarColor">#33000000</item> <!-- 상태바 색상 설정 : 상태바의 컨텐츠 색상을 바꿀 수 없으므로, 불투명하게 색상을 넣는다 -->
-    </style>
-
-    <style name="MainNavigationItemText">
-        <item name="android:textSize">10dp</item>
-        <item name="android:fontFamily">@font/notosans_kr_medium</item>
+        <item name="android:statusBarColor">@android:color/transparent</item> <!-- 상태바 색상 설정 -->
+        <item name="android:windowLightStatusBar">true</item> <!-- 상태바 컨텐츠의 색상을 어둡게 설정 -->
     </style>
 
 </resources>

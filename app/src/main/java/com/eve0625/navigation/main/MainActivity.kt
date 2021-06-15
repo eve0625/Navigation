@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         // 선택된 네비게이션 컨트롤러가 변경되었을때, action bar에 적용
+        // action bar 는 각 프레그먼트에서 처리함
 //        controller.observe(this, Observer { navController ->
 //            setupActionBarWithNavController(navController)
 //        })
